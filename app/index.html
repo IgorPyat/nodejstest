@@ -3,9 +3,29 @@
 <head>
     <meta charset="utf-8"/>
     <title>Test page</title>
+    <link rel ="stylesheet" href="./index.css">
 </head>
 <body>
+    <div id = "content" class="Content"></div>
+
     <script type="text/javascript">
+        function getUser() {
+            fetch('/api/Пятницкий_Игорь_Михайлович')
+                .then(res => {
+                    return res.json();
+                })
+                .then(resJSON => {
+                    const data = resJSON.data;
+                    const content = document.getElementById('content');
+                    data.forEach(element => {
+                        const div = document.createElement('div');
+                        div.className = 'Name';
+                        div.append('Name: ' + element.Name);
+                        content.appendChild(div);
+                    });
+                })
+        }
+        getUser()
 
     </script>
 </body>    
