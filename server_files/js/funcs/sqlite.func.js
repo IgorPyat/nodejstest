@@ -24,7 +24,7 @@ function dbGetUsers(err, rows, res) {
 }
 
 
-function Vkrs(res) {
+function Vkrs(req, res, next) {
 
     const sql ='select Users.Name as ФИО, Vkrs.Name as ВКР from Users join Vkrs on Users.VkrId = Vkrs.Id ';
     db.all(sql, function(err, rows) {
